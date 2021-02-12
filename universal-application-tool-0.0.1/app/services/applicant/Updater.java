@@ -1,6 +1,7 @@
 package services.applicant;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableSet;
 import services.program.ProgramDefinition;
 
 class Updater {
@@ -11,11 +12,11 @@ class Updater {
   }
 
   /** Performs updates on applicant data. */
-  void update(ImmutableList<Update> updates) {}
+  void update(ImmutableSet<Update> updates) {}
 
-  // TODO(natsid): This should return List<ValidationError> once ValidationError exists.
+  // TODO(natsid): This should return Set<ValidationError> once ValidationError exists.
   /** Runs validation logic on applicant data. */
-  ImmutableList<String> validate(ProgramDefinition programDefinition) {
+  ImmutableSet<String> validate(ProgramDefinition programDefinition) {
     return null;
   }
 
