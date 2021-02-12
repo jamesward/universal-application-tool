@@ -41,4 +41,6 @@ public class Applicant extends BaseModel {
   private String objectAsJsonString() throws IOException {
     return getApplicantData().asJsonString();
   }
+
+  public static final Finder<Long, Applicant> find = new Finder<>(Task.class);
 }
