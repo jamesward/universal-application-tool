@@ -3,6 +3,8 @@ package services.applicant;
 import com.google.common.collect.ImmutableList;
 import services.program.ProgramDefinition;
 
+import java.util.concurrent.CompletionStage;
+
 /** Operations that can be performed on an {@link ApplicantData}. */
 public interface ApplicantService {
 
@@ -12,12 +14,15 @@ public interface ApplicantService {
    * programDefinition, doesn't save the updates to the database and instead returns a list of
    * ValidationErrors.
    *
-   * @param applicantData the applicant data to update
+   * @param applicantId the ID  of the applicant to update
+   * @param programId the ID of the program in which the updates are being made
    * @param updates the updates to attempt
-   * @param programDefinition the program context in which the updates are being made
+   * @return
    */
-  ImmutableList<String> update(
-      ApplicantData applicantData,
-      ImmutableList<Update> updates,
-      ProgramDefinition programDefinition);
+  CompletionStage<ImmutableList<String>> update(
+      long applicantId,
+      long programId,
+      ImmutableList<Update> updates);
+
+  // getCurrentState
 }
