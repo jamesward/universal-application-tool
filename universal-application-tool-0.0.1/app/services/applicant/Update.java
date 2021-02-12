@@ -2,15 +2,12 @@ package services.applicant;
 
 import com.google.auto.value.AutoValue;
 
-/** Describes an update to an {@link ApplicantData}. */
 @AutoValue
 public abstract class Update {
-  /** Path to the piece of data to update, e.g., "name.first". */
+
+  /** A JSON-style path pointing to a scalar value to update in the applicant's {@link ApplicantData}.  */
   public abstract String path();
 
-  /** Value to set at path. */
+  /** The value to update the the applicant's {@link ApplicantData} to. */
   public abstract String value();
-
-  // Might want the following as well.
-  // public abstract UpdateMetadata updateMetadata();
 }
