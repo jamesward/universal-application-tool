@@ -18,6 +18,16 @@ GET     /admin/create               controllers.admin.CreateAppController.index
 GET     /demo/new                   controllers.J2HtmlDemoController.newOne(request: Request)
 POST    /demo                       controllers.J2HtmlDemoController.create(request: Request)
 
+# A controller for a page for an admin to create and access questions
+GET     /admin/questions/new              controllers.admin.QuestionController.newQuestion
+GET     /admin/questions/edit/:pathString controllers.admin.QuestionController.edit(pathString: String)
+GET     /admin/questions                  controllers.admin.QuestionController.list
+
++ nocsrf
+POST    /admin/questions/new              controllers.admin.QuestionController.create(request: Request)
++ nocsrf
+POST    /admin/questions/update           controllers.admin.QuestionController.update(request: Request)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(file)
 

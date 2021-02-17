@@ -19,6 +19,8 @@ public class QuestionDefinition {
   private final ImmutableMap<Locale, String> questionText;
   private final Optional<ImmutableMap<Locale, String>> questionHelpText;
 
+  private static Locale DEFAULT_LOCALE = Locale.ENGLISH;
+
   @JsonCreator
   public QuestionDefinition(
       @JsonProperty("id") long id,
@@ -70,6 +72,10 @@ public class QuestionDefinition {
     return this.description;
   }
 
+  public String getDefaultQuestionText() {
+    return this.getQuestionText(DEFAULT_LOCALE);
+  }
+
   /** Get the question text for the given locale. */
   public String getQuestionText(Locale locale) {
     if (this.questionText.containsKey(locale)) {
@@ -82,6 +88,10 @@ public class QuestionDefinition {
   /** Get the question tests for all locales. This is used for serialization. */
   public ImmutableMap<Locale, String> getQuestionText() {
     return questionText;
+  }
+
+  public String getDefaultQuestionHelpText() {
+    return this.getQuestionHelpText(DEFAULT_LOCALE);
   }
 
   /** Get the question help text for the given locale. */

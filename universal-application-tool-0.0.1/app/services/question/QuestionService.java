@@ -18,6 +18,18 @@ public interface QuestionService {
   Optional<QuestionDefinition> create(QuestionDefinition definition);
 
   /**
+   * Builds a question definition, accepting a type paramater and generating an id and version for
+   * you!
+   */
+  Optional<QuestionDefinition> build(
+      String name,
+      String path,
+      String description,
+      ImmutableMap<Locale, String> questionText,
+      Optional<ImmutableMap<Locale, String>> questionHelpText,
+      Optional<QuestionType> questionType);
+
+  /**
    * Adds a new translation to an existing question definition. Returns true if the write is
    * successful.
    *
@@ -42,6 +54,9 @@ public interface QuestionService {
 
   /** Checks whether a specific path is valid. */
   boolean isValid(String pathString);
+
+  /** Get the next id or create a new UUID or something. */
+  long nextId();
 
   /**
    * Gets the question definition for a given path.
