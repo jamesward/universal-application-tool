@@ -12,6 +12,8 @@ public class LoginForm extends BaseHtmlView {
   public Content render(Http.Request request) {
     return htmlContent(
         body(
+            h1("Error: You are not logged in")
+                .withCondHidden(request.queryString("message").equals("login")),
             h1("Log In"),
             form(
                     makeCsrfTokenInputTag(request),
@@ -19,6 +21,9 @@ public class LoginForm extends BaseHtmlView {
                     passwordField("pwd", "password", "Password"),
                     submitButton("login", "Submit"))
                 .withMethod("POST")
-                .withAction("/callback?client_name=FormClient")));
+                .withAction("/callback?client_name=FormClient"),
+            h1("Or, continue as guest."),
+            button("guest", "continue")
+                .attr("onclick", "window.location = '/callback?client_name=GuestClient';")));
   }
 }

@@ -6,6 +6,7 @@ import static j2html.TagCreator.input;
 import static j2html.TagCreator.label;
 import static j2html.TagCreator.text;
 
+import j2html.TagCreator;
 import j2html.tags.ContainerTag;
 import j2html.tags.DomContent;
 import j2html.tags.Tag;
@@ -38,6 +39,10 @@ public abstract class BaseHtmlView {
   protected Tag passwordField(String fieldName, String labelText) {
     return label(text(labelText), input().withType("password").withName(fieldName))
         .attr("for", fieldName);
+  }
+
+  protected Tag button(String id, String text) {
+    return TagCreator.button(text(text)).withId(id).withType("button");
   }
 
   protected Tag submitButton(String textContents) {
